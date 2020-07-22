@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoey/components/tasks_list.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -14,7 +15,7 @@ class TasksScreen extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(
-                left: 24.0,
+                left: 32.0,
                 top: 16.0,
                 bottom: 24.0,
               ),
@@ -28,7 +29,7 @@ class TasksScreen extends StatelessWidget {
                     child: Icon(
                       Icons.list,
                       color: Colors.lightBlueAccent,
-                      size: 32.0,
+                      size: 28.0,
                     ),
                   ),
                   const SizedBox(height: 16.0),
@@ -36,15 +37,16 @@ class TasksScreen extends StatelessWidget {
                     'Todoey',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 50.0,
+                      fontSize: 48.0,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
+                  const SizedBox(height: 8.0),
                   Text(
                     '12 tasks',
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 18.0,
+                      fontSize: 16.0,
                     ),
                   ),
                 ],
@@ -52,6 +54,10 @@ class TasksScreen extends StatelessWidget {
             ),
             Expanded(
               child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 32.0,
+                  vertical: 16.0,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -59,6 +65,7 @@ class TasksScreen extends StatelessWidget {
                     topRight: Radius.circular(24.0),
                   ),
                 ),
+                child: TasksList(),
               ),
             )
           ],

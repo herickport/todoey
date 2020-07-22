@@ -16,9 +16,6 @@ class Todoey extends StatelessWidget {
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor: Colors.lightBlueAccent,
         ),
-        iconTheme: IconThemeData(
-          size: 32.0,
-        ),
         scaffoldBackgroundColor: Colors.lightBlueAccent,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
