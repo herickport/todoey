@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  AddTaskScreen({@required this.addTaskCallback});
+
+  final Function(String taskTitle) addTaskCallback;
+
+  final TextEditingController _taskController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -21,7 +27,7 @@ class AddTaskScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
-                'Add Task',
+                'New Task',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.lightBlueAccent,
@@ -30,6 +36,7 @@ class AddTaskScreen extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: _taskController,
                 autofocus: true,
                 textAlign: TextAlign.center,
               ),
@@ -37,10 +44,10 @@ class AddTaskScreen extends StatelessWidget {
               SizedBox(
                 height: 48.0,
                 child: RaisedButton(
+                  onPressed: () => addTaskCallback(_taskController.text),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  onPressed: () {},
                   color: Colors.lightBlueAccent,
                   textColor: Colors.white,
                   child: Text(
