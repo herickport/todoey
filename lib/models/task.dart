@@ -6,7 +6,7 @@ class Task {
   final String title;
   bool isDone;
 
-  void handleDone(bool newValue) {
-    isDone = newValue;
+  void toggleDone() {
+    isDone = !isDone;
   }
 }
