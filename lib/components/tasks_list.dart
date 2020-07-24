@@ -19,6 +19,7 @@ class TasksList extends StatelessWidget {
               return TaskTile(
                 task: task,
                 toggleCheckboxState: (_) => taskData.updateTask(task),
+                deleteTaskCallback: () => taskData.deleteTask(task),
               );
             },
           );
