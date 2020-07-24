@@ -15,14 +15,7 @@ class TasksScreen extends StatelessWidget {
             context: context,
             isScrollControlled: true,
             backgroundColor: Colors.transparent,
-            builder: (context) => AddTaskScreen(
-              addTaskCallback: (taskTitle) {
-                // setState(() {
-                //   tasks.add(Task(title: taskTitle));
-                // });
-                Navigator.pop(context);
-              },
-            ),
+            builder: (context) => AddTaskScreen(),
           );
         },
         child: Icon(Icons.add),

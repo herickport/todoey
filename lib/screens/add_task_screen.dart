@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:todoey/models/task_data.dart';
+
+import 'package:provider/provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  AddTaskScreen({@required this.addTaskCallback});
-
-  final Function(String taskTitle) addTaskCallback;
-
   final TextEditingController _taskController = TextEditingController();
 
   @override
@@ -44,7 +43,10 @@ class AddTaskScreen extends StatelessWidget {
               SizedBox(
                 height: 48.0,
                 child: RaisedButton(
-                  onPressed: () => addTaskCallback(_taskController.text),
+                  onPressed: () {
+                    context.read<TaskData>().addTask(_taskController.text);
+                    Navigator.pop(context);
+                  },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
