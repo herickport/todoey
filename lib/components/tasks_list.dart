@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:todoey/components/task_tile.dart';
-import 'package:todoey/models/task.dart';
+import 'package:todoey/models/task_data.dart';
 import 'package:todoey/utils/no_glow_behavior.dart';
 
-class TasksList extends StatefulWidget {
-  TasksList(this.tasks);
+import 'package:provider/provider.dart';
 
-  final List<Task> tasks;
-
-  @override
-  _TasksListState createState() => _TasksListState();
-}
-
-class _TasksListState extends State<TasksList> {
+class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Task> tasks = widget.tasks;
     return ScrollConfiguration(
       behavior: NoGlowBehavior(),
-      child: ListView.builder(
-        itemCount: tasks.length,
-        itemBuilder: (_, index) {
-          return TaskTile(
-            task: tasks[index],
-            toggleCheckboxState: (checkboxState) {
-              setState(() {
-                tasks[index].handleDone(checkboxState);
-              });
+      child: Consumer<TaskData>(
+        builder: (_, taskData, __) {
+          return ListView.builder(
+            itemCount: taskData.taskCount,
+            itemBuilder: (_, index) {
+              return TaskTile(
+                task: taskData.tasks[index],
+                toggleCheckboxState: (checkboxState) {
+                  // setState(() {
+                  //   tasks[index].handleDone(checkboxState);
+                  // });
+                },
+              );
             },
           );
         },
