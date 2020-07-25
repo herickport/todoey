@@ -6,6 +6,20 @@ class Task {
   final String title;
   bool isDone;
 
+  Map toJson() {
+    return {
+      'title': title,
+      'isDone': isDone,
+    };
+  }
+
+  factory Task.fromJson(Map<String, dynamic> json) {
+    return Task(
+      title: json['title'] as String,
+      isDone: json['isDone'] as bool,
+    );
+  }
+
   void toggleDone() {
     isDone = !isDone;
   }
